@@ -1,0 +1,15 @@
+name: "Deploy to GitHub Actions"
+
+on:
+  push:
+    origin:
+      branches: ["main"]
+
+jobs:
+  deploy-github-actions:
+    runs-on: ubuntu-latest:
+    steps:
+      run: echo "Hacemos pull del código de la rama main"
+      run: echo "Correr migraciones"
+      run: echo "Generar binario"
+      run: echo "Publicar versión"
