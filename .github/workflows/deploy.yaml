@@ -7,9 +7,10 @@ on:
 
 jobs:
   deploy-github-actions:
-    runs-on: ubuntu-latest:
+    runs-on: ubuntu-latest
     steps:
-      run: echo "Hacemos pull del código de la rama main"
-      run: echo "Correr migraciones"
-      run: echo "Generar binario"
-      run: echo "Publicar versión"
+      - uses: actions/checkout@v4
+      - run: echo "Hacemos pull del código de la rama main"
+      - run: echo "Correr migraciones"
+      - run: echo "Generar binario"
+      - run: echo "Publicar versión"
