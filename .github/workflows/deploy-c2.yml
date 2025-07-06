@@ -5,22 +5,25 @@ on: push
 jobs:
   first-job:
     runs-on: ubuntu-latest
+    outputs:
+      my_variable: ${{ steps.step_1.outputs.my_variable }}
+    # This job will run on every push to any branch
     env:
       MY_ENV_VAR: "Hello World"
     steps:
       - name: Working dir
-        run: ls -al
-        
-      - name: Checkout code
-        uses: actions/checkout@v4
+        id: step_1
+        run: echo "my_variable=Hola Mundo" >> ${GITHUB_OUTPUT}
 
-      - name: Working dir after checkout
-        run: ls -al
+      - name: Obtener mensaje
+        run: echo {{ steps.step_1.outputs.my_variable }}
 
   second-job:
-    if: ${{ github.ref == 'refs/heads/main' }} 
+    if: ${{ github.ref == 'refs/heads/main' }}
     needs: first-job
     runs-on: ubuntu-latest
+    env:
+      SALIDA: ${{ needs.first-job.outputs.my_variable }}
     steps:
       - name: Hola Mundo
-        run: echo "Hola Mundo desde el segundo job"
+        run: echo "Hola Mundo desde el segundo job ${{ env.SALIDA }}"
