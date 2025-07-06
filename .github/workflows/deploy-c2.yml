@@ -5,9 +5,11 @@ on: push
 jobs:
   first-job:
     runs-on: ubuntu-latest
+    env:
+      MY_ENV_VAR: "Hello World"
     steps:
       - name: Hola Mundo
-        run: echo "Hola Mundo desde el primer job"
+        run: echo "Hola Mundo desde el primer job ${MY_ENV_VAR}"
 
   second-job:
     if: ${{ github.ref == 'refs/heads/main' }} 
