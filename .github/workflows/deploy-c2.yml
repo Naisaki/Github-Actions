@@ -9,7 +9,7 @@ jobs:
       MY_ENV_VAR: "Hello World"
     steps:
       - name: Hola Mundo
-        run: echo "Hola Mundo desde el primer job ${MY_ENV_VAR}"
+        run: echo "Hola Mundo desde el primer job $MY_ENV_VAR"
 
   second-job:
     if: ${{ github.ref == 'refs/heads/main' }} 
