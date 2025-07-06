@@ -11,19 +11,13 @@ jobs:
     env:
       MY_ENV_VAR: "Hello World"
     steps:
-      - name: Working dir
+      - name: Generar archivo de log
         id: step_1
-        run: echo "my_variable=Hola Mundo" >> ${GITHUB_OUTPUT}
+        run: |
+          echo "Archivo prueba, hola" >> test.log
 
-      - name: Obtener mensaje
-        run: echo {{ steps.step_1.outputs.my_variable }}
-
-  second-job:
-    if: ${{ github.ref == 'refs/heads/main' }}
-    needs: first-job
-    runs-on: ubuntu-latest
-    env:
-      SALIDA: ${{ needs.first-job.outputs.my_variable }}
-    steps:
-      - name: Hola Mundo
-        run: echo "Hola Mundo desde el segundo job ${{ env.SALIDA }}"
+      - name: Subir artefacto
+        uses: actions/upload-artifact@v4
+        with:
+          name: archivo-test
+          path: test.log
