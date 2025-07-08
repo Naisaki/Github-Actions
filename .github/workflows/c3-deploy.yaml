@@ -41,7 +41,7 @@ jobs:
         working-directory: Excercises/c3
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           path: Excercises/c3/public/
 
