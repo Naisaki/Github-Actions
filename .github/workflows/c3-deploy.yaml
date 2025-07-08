@@ -30,8 +30,7 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        with:
-          path: Excercises/c3
+        working-directory: Excercises/c3
 
       - name: Run tests
         run: npm test
