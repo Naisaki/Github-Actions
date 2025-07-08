@@ -25,8 +25,14 @@ jobs:
         with:
           node-version: '18'
 
-      # - name: Install dependencies
-      #   run: npm install
+      - name: Checkout code #Sirve para ubicarme en el repositorio de la maquina virtual
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
 
       # - name: Build project
       #   run: npm run build
