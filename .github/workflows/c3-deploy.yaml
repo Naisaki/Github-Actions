@@ -12,6 +12,7 @@ jobs:
         node: [18, 20]
 
     services:
+      if: ${{ matrix.os == 'ubuntu-latest' && matrix.node == 18 }}
       redis:
         image: redis:latest
         ports:
