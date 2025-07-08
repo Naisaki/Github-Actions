@@ -11,13 +11,12 @@ jobs:
         os: [ubuntu-latest, windows-latest]
         node: [18, 20]
 
-    if: ${{ matrix.os == 'ubuntu-latest' && matrix.node == 18 }}
-
     services:
       redis:
         image: redis:latest
         ports:
           - 6379:6379
+
     steps:
       - name: Install Redis CLI
         run: sudo apt-get update -y && sudo apt-get install redis-tools -y
@@ -49,6 +48,7 @@ jobs:
         working-directory: Excercises/c3
 
       - name: Upload artifact
+        if: ${{ matrix.os == 'ubuntu-latest' && matrix.node == 18 }}
         uses: actions/upload-pages-artifact@v3
         with:
           path: Excercises/c3/public/
