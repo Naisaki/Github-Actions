@@ -4,6 +4,8 @@ on: push
 
 jobs:
   build:
+    if: ${{ matrix.os == 'ubuntu-latest' }}
+    
     runs-on: ${{ matrix.os }}
 
     strategy:

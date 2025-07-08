@@ -12,7 +12,6 @@ jobs:
         node: [18, 20]
 
     services:
-      if: ${{ matrix.os == 'ubuntu-latest' && matrix.node == 18 }}
       redis:
         image: redis:latest
         ports:
@@ -20,11 +19,9 @@ jobs:
 
     steps:
       - name: Install Redis CLI
-        if: ${{ matrix.os == 'ubuntu-latest' && matrix.node == 18 }}
         run: sudo apt-get update -y && sudo apt-get install redis-tools -y
       
       - name: Check Redis Service
-        if: ${{ matrix.os == 'ubuntu-latest' && matrix.node == 18 }}
         run: redis-cli -h localhost -p 6379 ping
 
       - name: Print Variable
