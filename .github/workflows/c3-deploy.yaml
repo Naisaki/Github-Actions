@@ -4,7 +4,15 @@ on: push
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node: [18, 20]
+
+    if: ${{ matrix.os == 'ubuntu-latest' && matrix.node == 18 }}
+
     services:
       redis:
         image: redis:latest
@@ -23,7 +31,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: ${{ matrix.node }}
 
       - name: Checkout code #Sirve para ubicarme en el repositorio de la maquina virtual
         uses: actions/checkout@v4
@@ -79,3 +87,16 @@ jobs:
       # - name: Deploy to server
       #   run: echo "Deploying to server..."
         # Aquí puedes agregar los comandos necesarios para desplegar tu aplicación al servidor
+  notify:
+    runs-on: ubuntu-latest
+    needs: deploy
+    if: always()
+
+    steps:
+      - name: notify to slack
+        uses: 8398a7/action-slack@v3
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK }} #Necesito crear un webhook en Slack y agregarlo a los secretos del repositorio
+        with:
+          status: ${{ job.status }}
+          fields: repo,commit,author,job,took
