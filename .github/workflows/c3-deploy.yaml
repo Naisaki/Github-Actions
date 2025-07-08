@@ -58,9 +58,16 @@ jobs:
     # if: ${{ success() }}
     runs-on: ubuntu-latest
     needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment-pages.outputs.page_url }}
     steps:
-      - name: Deploy to Server
-        run: echo "Deploying to server..."
+      - name: Deploy to GitHub Pages
+        id: deployment-pages
+        uses: actions/deploy-pages@v4
       # - name: Download artifact
       #   uses: actions/download-artifact@v4
       #   with:
