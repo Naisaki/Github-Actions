@@ -27,5 +27,6 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: ./Exercises/c4/publish-image-docker
+          file: ./Exercises/c4/publish-image-docker/Dockerfile
           push: true
           tags: ghcr.io/arianjc2002/imagen-bn:latest
