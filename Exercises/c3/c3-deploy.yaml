@@ -37,21 +37,21 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: Excercises/c3
+        working-directory: Exercises/c3
 
       - name: Run tests
         run: npm test
-        working-directory: Excercises/c3
+        working-directory: Exercises/c3
 
       - name: Build Page
         run: npm run build
-        working-directory: Excercises/c3
+        working-directory: Exercises/c3
 
       - name: Upload artifact
         if: ${{ matrix.os == 'ubuntu-latest' && matrix.node == 18 }}
         uses: actions/upload-pages-artifact@v3
         with:
-          path: Excercises/c3/public/
+          path: Exercises/c3/public/
 
       # - name: Build project
       #   run: npm run build

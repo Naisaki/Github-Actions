@@ -29,9 +29,9 @@ jobs:
 
       - name: Instalar dependencias usando versiones de package-lock.json
         run: npm ci
-        working-directory: Excercises/c4/publish-package
+        working-directory: Exercises/c4/publish-package
       - name: Publicar el paquete en GitHub Packages
         run: npm publish
-        working-directory: Excercises/c4/publish-package
+        working-directory: Exercises/c4/publish-package
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
