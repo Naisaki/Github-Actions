@@ -1,0 +1,15 @@
+name: Trying out my first Javascript GitHub Action
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: My JS action
+        uses: actions/hello-world-javascript-action@v1.1
+        with:
+          who-to-greet: Mona the Octocat
