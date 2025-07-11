@@ -10,6 +10,6 @@ jobs:
 
     steps:
       - name: My JS action
-        uses: ArianJC2002/hello-world-javascript-action@v1.2
+        uses: ArianJC2002/hello-world-javascript-action@v1.3
         with:
           who-to-greet: Mona the Octocat
