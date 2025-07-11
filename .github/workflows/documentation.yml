@@ -38,7 +38,7 @@ jobs:
       - name: PDF generate
         uses: baileyjm02/markdown-to-pdf@v1
         with:
-          input: ./Exercises/c5/docs
+          input_dir: ./Exercises/c5/docs
           output_dir: ./Exercises/c5/docs/pdfs
           build_html: true
 
