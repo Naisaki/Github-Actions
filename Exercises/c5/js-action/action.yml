@@ -1,13 +1,20 @@
 name: 'Hello World Action by ArianJC2002'
 description: 'Greet someone and record the time'
+
 inputs:
-  who-to-greet: #id of the input
-    description: 'Who to greet'
+  who-to-greet: # id of input
+    description: Who to greet
     required: true
-    default: 'World'
-outputs: #id of the output
-  time:
-    description: 'The time we greeted you
+    default: World
+
+outputs:
+  time: # id of output
+    description: The time we greeted you
+
 runs:
-  using: 'node20'
-  main: 'index.js'
+  using: node20
+  main: dist/index.js
+
+branding:
+  icon: 'message-square'
+  color: 'red'

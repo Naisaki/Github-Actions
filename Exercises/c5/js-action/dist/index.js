@@ -31246,13 +31246,16 @@ try {
   const nameToGreet = coreExports.getInput("who-to-greet");
   coreExports.info(`Hello ${nameToGreet}!`);
 
-  // Get the current time and set it as an output variable
+  // Get the current time
   const time = new Date().toTimeString();
-  coreExports.setOutput("time", time);
+
+  // Set output using environment file (nueva forma)
+  require$$1.appendFileSync(process.env.GITHUB_OUTPUT, `time=${time}\n`);
 
   // Get the JSON webhook payload for the event that triggered the workflow
   const payload = JSON.stringify(githubExports.context.payload, undefined, 2);
   coreExports.info(`The event payload: ${payload}`);
+
 } catch (error) {
   coreExports.setFailed(error.message);
 }
