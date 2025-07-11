@@ -23,6 +23,7 @@ jobs:
       
       - name: Compile the project
         run: dotnet build --configuration Release
+        working-directory: ./Exercises/c5
 
   generate-pdf:
     runs-on: ubuntu-latest
@@ -30,6 +31,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
+      - name: List files for debugging
+        run: ls -R ./Exercises/c5/docs
 
       - name: PDF generate
         uses: baileyjm02/markdown-to-pdf@v1
