@@ -23,10 +23,13 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      # - name: Get Lowercase Owner
+      #   run: echo "Lowercase Owner: $(echo ${{ github.repository_owner }} | tr '[:upper:]' '[:lower:]')"
+
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
           context: ./Exercises/c4/publish-image-docker
           file: ./Exercises/c4/publish-image-docker/Dockerfile
           push: true
-          tags: ghcr.io/arianjc2002/imagen-bn:latest
+          tags: ghcr.io/${{ github.repository_owner }}/imagen-bn:latest
