@@ -1,0 +1,33 @@
+{
+  "name": "js-action",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ArianJC2002/Github-Actions.git"
+  },
+  "keywords": [],
+  "author": "Arian Conqui",
+  "license": "MIT",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "bugs": {
+    "url": "https://github.com/ArianJC2002/Github-Actions/issues"
+  },
+  "homepage": "https://github.com/ArianJC2002/Github-Actions#readme",
+  "description": "Desarrrolo de una acción de GitHub con Node.js",
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "@actions/github": "^6.0.1"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.6",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "rollup": "^4.44.2"
+  }
+}
