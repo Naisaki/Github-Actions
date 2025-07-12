@@ -1,6 +1,10 @@
 name: Deploy Github Pages with Azure
 
-on: push
+on:
+  push:
+    branches:
+      - main
+      - stage
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -14,9 +18,15 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_KEY }}
 
-      - name: Create file
-        run: ssh -o StrictHostKeyChecking=no azureuser@20.55.25.47 touch hola.txt
+      # - name: Create file
+      #   run: ssh -o StrictHostKeyChecking=no azureuser@20.55.25.47 touch hola.txt
 
-      - name: Deploy to Server
-        run: bash deploy.sh
+      - name: Deploy to stage Server
+        if : ${{ github.ref == 'refs/heads/stage' }}
+        run: bash deploy.sh stage
+        working-directory: Exercises/c6
+
+      - name: Deploy to prod Server
+        if : ${{ github.ref == 'refs/heads/main' }}
+        run: bash deploy.sh main
         working-directory: Exercises/c6
