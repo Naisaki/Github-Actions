@@ -16,3 +16,7 @@ jobs:
 
       - name: Create file
         run: ssh -o StrictHostKeyChecking=no azureuser@20.55.25.47 touch hola.txt
+
+      - name: Deploy to Server
+        run: bash deploy.sh
+        working-directory: Exercises/c6
