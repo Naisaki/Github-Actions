@@ -32,4 +32,4 @@ jobs:
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_TOKEN }}
           app_location: 'Exercises/c6/public'
-          deployment_action: 'upload'
+          action: 'upload'
