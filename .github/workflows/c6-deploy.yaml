@@ -1,0 +1,35 @@
+name: Deploy Github Pages with Azure
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code #Sirve para ubicarme en el repositorio de la maquina virtual
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18' # Cambia a la versión de Node.js que necesites
+      
+      - name: Install dependencies
+        run: npm install
+        working-directory: Exercises/c6
+
+      - name: Run test
+        run: npm run test
+        working-directory: Exercises/c6
+
+      - name: Build Page
+        run: npm run build
+        working-directory: Exercises/c6
+
+      - name: Deploy to Azure
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_TOKEN }}
+          app_location: 'Exercises/c6/public'
+          deployment_action: 'upload'
