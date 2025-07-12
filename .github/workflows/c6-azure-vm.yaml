@@ -8,11 +8,11 @@ jobs:
     steps:
       - name: Checkout code #Sirve para ubicarme en el repositorio de la maquina virtual
         uses: actions/checkout@v4
-        
+
       - name: Setup SSH
         uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.SSH_KEY }}
 
       - name: Create file
-        run: ssh azureuser@20.55.25.47 touch hola.txt
+        run: ssh -o StrictHostKeyChecking=no azureuser@20.55.25.47 touch hola.txt
